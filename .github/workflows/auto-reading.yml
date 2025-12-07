@@ -56,41 +56,43 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Create config file
+      env:
+        NOTIFY_ENABLED: ${{ github.event.inputs.notify_enabled || 'true' }}
       run: |
-        cat > config.yaml << 'EOF'
+        cat > config.yaml << EOF
         app:
           name: "WeReadBot-GitHub-Action"
           startup_mode: "immediate"
           startup_delay: "1-2"
-
+    
         reading:
-            mode: smart_random
-            target_duration: 45-90
-            reading_interval: 30-48
-            use_curl_data_first: true
-            fallback_to_config: true
+          mode: smart_random
+          target_duration: 45-90
+          reading_interval: 30-48
+          use_curl_data_first: true
+          fallback_to_config: true
           smart_random:
             book_continuity: 0.8
             chapter_continuity: 0.7
             book_switch_cooldown: 3600
-
+    
         human_simulation:
           enabled: false
           reading_speed_variation: true
           break_probability: 0.15
           break_duration: "10-20"
           rotate_user_agent: false
-
+    
         network:
           timeout: 30
           retry_times: 3
           retry_delay: "5-15"
           rate_limit: 10
-
+    
         notification:
-          enabled: ${{ github.event.inputs.notify_enabled || true }}
+          enabled: $NOTIFY_ENABLED
           include_statistics: true
-
+    
         logging:
           level: "INFO"
           format: "detailed"
