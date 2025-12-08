@@ -67,7 +67,7 @@ jobs:
     
         reading:
           mode: smart_random
-          target_duration: 45-90
+          target_duration: "${{ github.event.inputs.target_duration || '30-35' }}"
           reading_interval: 30-48
           use_curl_data_first: true
           fallback_to_config: true
