@@ -74,6 +74,18 @@ jobs:
             book_continuity: 0.8
             chapter_continuity: 0.7
             book_switch_cooldown: 3600
+          books:
+            - name: 三体全集
+              book_id: ce032b305a9bc1ce0b0dd2a
+              chapters:
+                - chapter_id: e2e329c0261e2ef524fbf75
+                - chapter_id: ed332ca0262ed3d2c2191f2
+                - chapter_id: ac6325b0263ac627ab1c3dd
+                - chapter_id: 65b326f026965b9eea6e6e1
+            - name: GO语言精进之路2
+              book_id: b8f32d2072895edbb8fbb04
+              chapters:
+                - chapter_id: 70e32fb021170efdf2eca12
     
         human_simulation:
           enabled: false
